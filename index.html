@@ -178,6 +178,11 @@
       grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
       gap: 1.2rem;
     }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -220,6 +225,13 @@
       color: var(--gold);
       margin-bottom: 0.5rem;
     }
+    .project-link-icon {
+      color: var(--gray);
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .project-card:hover .project-link-icon { color: var(--teal); }
     .project-title {
       font-weight: 700;
       font-size: 1.05rem;
@@ -277,10 +289,6 @@
     .skill-group li { font-size: 0.8rem; color: var(--slate); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; }
     .skill-group li::before { content: '▹'; color: var(--teal); font-size: 1rem; }
 
-    .tool-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-    .tool-item { background: var(--surface); border: 1px solid var(--border); padding: 0.8rem 1.2rem; border-radius: 6px; font-size: 0.8rem; color: var(--slate); }
-    .tool-item strong { color: var(--white); }
-
     #contact { text-align: center; padding: 5rem 3rem; background: var(--bg2); border-top: 1px solid var(--border); }
     .contact-inner { max-width: 600px; margin: 0 auto; }
     .contact-inner .section-label { justify-content: center; }
@@ -337,7 +345,7 @@
       #hero { padding: 6rem 1.5rem 3rem; }
       section { padding: 3rem 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .projects-grid, .tools-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; padding: 1.5rem; }
       .hero-name { font-size: 2.5rem; }
     }
@@ -443,12 +451,13 @@
         </a>
 
         <a href="https://cloudbv.itch.io/sudoku-classic-with-a-twist" target="_blank" class="project-card reveal">
+          <img src="sudoku.png" alt="Sudoku Classic" class="project-img">
           <div class="project-card-header">
             <span class="project-link-icon">&#8599;</span>
           </div>
           <div class="project-type">Game / Python / Pygame</div>
           <div class="project-title">Sudoku Classic (with a twist)</div>
-          <p class="project-desc">Sudoku that automatically shows which numbers can go in each box, and uses a heat map to highlight the most constrained cells. Focus on the logic.</p>
+          <p class="project-desc">Sudoku that automatically shows which numbers can go in each box, and uses a heat map to highlight the hardest cells to solve.</p>
           <div class="project-tags">
             <span class="tag tag-teal">Python</span>
             <span class="tag tag-teal">Pygame</span>
@@ -458,6 +467,7 @@
         </a>
 
         <a href="https://cloudbv.itch.io/block-breaker-simple" target="_blank" class="project-card reveal">
+          <img src="block_breaker.png" alt="Block Breaker" class="project-img">
           <div class="project-card-header">
             <span class="project-link-icon">&#8599;</span>
           </div>
@@ -472,6 +482,7 @@
         </a>
 
         <a href="https://cloudbv.itch.io/block-blast-ghost" target="_blank" class="project-card reveal">
+          <img src="block_blast.png" alt="Block Blast" class="project-img">
           <div class="project-card-header">
             <span class="project-link-icon">&#8599;</span>
           </div>
@@ -486,6 +497,7 @@
         </a>
 
         <a href="https://cloudbv.itch.io/match-3-circle" target="_blank" class="project-card reveal">
+          <img src="match3.png" alt="Match 3" class="project-img">
           <div class="project-card-header">
             <span class="project-link-icon">&#8599;</span>
           </div>
@@ -510,13 +522,48 @@
       Utility apps built to solve specific workflow challenges, from classroom management to personal tracking. Designed for practical, daily use.
     </p>
 
-    <div class="tool-list reveal">
-        <div class="tool-item"><strong>Wheel Spinner</strong> (Classroom management)</div>
-        <div class="tool-item"><strong>Group Randomizer</strong> (Balanced team draft)</div>
-        <div class="tool-item"><strong>Assignment Lottery</strong> (Task distribution)</div>
-        <div class="tool-item"><strong>Job Hunt Tracker</strong> (Application tracking)</div>
-        <div class="tool-item"><strong>Skripsi DB</strong> (Personal university tool)</div>
-        <div class="tool-item"><strong>Portfolio Maker</strong> (HTML generator)</div>
+    <div class="tools-grid reveal">
+        <a href="https://cloudbv.itch.io/wheel-name-spin-with-score-system" target="_blank" class="project-card">
+            <img src="tool_spinner.png" alt="Wheel Spinner" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Wheel Spinner</div>
+            <p class="project-desc">Classroom participation picker with weighted scoring so recent picks get lower priority.</p>
+        </a>
+
+        <a href="https://cloudbv.itch.io/group-randomizer-with-score-system-for-balance" target="_blank" class="project-card">
+            <img src="tool_randomizer.png" alt="Group Randomizer" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Group Randomizer</div>
+            <p class="project-desc">Balanced team drafting using a snake-draft algorithm to ensure fair team distribution.</p>
+        </a>
+
+        <a href="https://cloudbv.itch.io/assignment-lottery" target="_blank" class="project-card">
+            <img src="tool_lottery.png" alt="Assignment Lottery" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Assignment Lottery</div>
+            <p class="project-desc">Random task distribution with equal odds, handling overflow gracefully.</p>
+        </a>
+
+        <a href="https://cloudbv.itch.io/job-hunt-tracker" target="_blank" class="project-card">
+            <img src="tool_job.png" alt="Job Hunt Tracker" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Job Hunt Tracker</div>
+            <p class="project-desc">Application tracking dashboard to prevent double-applying and manage stats.</p>
+        </a>
+
+        <div class="project-card" style="cursor:default;">
+            <img src="tool_skripsi.png" alt="Skripsi DB" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Skripsi DB</div>
+            <p class="project-desc">Personal university thesis management tool with submission tracking.</p>
+        </div>
+
+        <div class="project-card" style="cursor:default;">
+            <img src="tool_portfolio.png" alt="Portfolio Maker" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Portfolio Maker</div>
+            <p class="project-desc">The HTML generator used to build this portfolio site.</p>
+        </div>
     </div>
   </section>
 
