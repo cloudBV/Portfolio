@@ -201,14 +201,16 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.4);
     }
     
+    /* FIXED IMAGE CSS HERE */
     .project-img {
       width: calc(100% + 3.6rem);
       margin: -1.8rem -1.8rem 1.2rem -1.8rem;
       border-radius: 8px 8px 0 0;
       border-bottom: 1px solid var(--border);
       display: block;
-      object-fit: cover;
-      height: 180px;
+      object-fit: contain; /* Shows the whole image */
+      height: 200px; /* Slightly taller to accommodate portrait */
+      background-color: #000; /* Letterboxing background */
     }
 
     .project-card-header {
@@ -398,7 +400,7 @@
       
       <div class="projects-grid" style="margin-bottom: 3rem;">
         <a href="https://play.google.com/store/apps/details?id=com.cloudbv.chesstournamentautoplay" target="_blank" class="project-card reveal" style="grid-column: 1 / -1; border-color: rgba(45,212,191,0.6); background: linear-gradient(145deg, var(--surface) 0%, rgba(45,212,191,0.05) 100%);">
-          <img src="chess.png" alt="ChessAutoplay Screenshot" class="project-img">
+          <img src="chess.png" alt="ChessAutoplay Screenshot" class="project-img" style="height: 300px;">
           <div class="project-card-header">
             <span class="project-link-icon" style="color:var(--teal)">&#8599;</span>
           </div>
@@ -543,6 +545,27 @@
             <div class="project-title">Assignment Lottery</div>
             <p class="project-desc">Random task distribution with equal odds, handling overflow gracefully.</p>
         </a>
+
+        <a href="https://cloudbv.itch.io/job-hunt-tracker" target="_blank" class="project-card">
+            <img src="tool_job.png" alt="Job Hunt Tracker" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Job Hunt Tracker</div>
+            <p class="project-desc">Application tracking dashboard to prevent double-applying and manage stats.</p>
+        </a>
+
+        <div class="project-card" style="cursor:default;">
+            <img src="tool_skripsi.png" alt="Skripsi DB" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Skripsi DB</div>
+            <p class="project-desc">Personal university thesis management tool with submission tracking.</p>
+        </div>
+
+        <div class="project-card" style="cursor:default;">
+            <img src="tool_portfolio.png" alt="Portfolio Maker" class="project-img">
+            <div class="project-type">Tool / Python / Tkinter</div>
+            <div class="project-title">Portfolio Maker</div>
+            <p class="project-desc">The HTML generator used to build this portfolio site.</p>
+        </div>
     </div>
   </section>
 
