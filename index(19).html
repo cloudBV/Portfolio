@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yosef Setiawan, Game Programmer</title>
+  <meta name="description" content="Yosef Setiawan is a solo game programmer in Bali working in Godot 4 and Python. Published a chess study app on Google Play, plus browser games, desktop tools and SQL case studies." />
+  <meta name="theme-color" content="#0b0f14" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Yosef Setiawan, Game Programmer" />
+  <meta property="og:description" content="Godot 4 and Python. A chess study app on Google Play, seven games, six desktop tools and three data and process case studies." />
+  <meta property="og:url" content="https://cloudbv.github.io/Portfolio/" />
+  <meta property="og:image" content="https://cloudbv.github.io/Portfolio/chess.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0f14'/%3E%3Crect x='6' y='14' width='14' height='4' fill='%232dd4bf'/%3E%3Crect x='22' y='14' width='4' height='4' fill='%23f2b84b'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yosef Setiawan",
+    "jobTitle": "Game Programmer",
+    "url": "https://cloudbv.github.io/Portfolio/",
+    "email": "mailto:yosefsetiawan2001@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Denpasar", "addressRegion": "Bali", "addressCountry": "ID" },
+    "alumniOf": "President University",
+    "sameAs": [
+      "https://cloudbv.itch.io",
+      "https://github.com/cloudBV",
+      "https://play.google.com/store/apps/details?id=com.cloudbv.chesstournamentautoplay"
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --raised: #10161d;
+      --line: #1f2a36;
+      --text: #e6ebf2;
+      --muted: #9aa7b8;
+      --faint: #7d8a9c;
+      --teal: #2dd4bf;
+      --teal-ink: #06201c;
+      --gold: #f2b84b;
+      --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+      --body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; }
+    a { color: inherit; }
+    ul, ol { list-style: none; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+    .sr {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    .skip {
+      position: absolute; left: 1rem; top: -4rem; z-index: 200;
+      background: var(--teal); color: var(--teal-ink);
+      padding: .6rem 1rem; border-radius: 6px; font-weight: 600; text-decoration: none;
+    }
+    .skip:focus { top: 1rem; }
+
+    .wrap { width: min(1100px, 100% - 3rem); margin-inline: auto; }
+    .section { padding-block: clamp(3.5rem, 8vw, 6rem); scroll-margin-top: 3.5rem; }
+
+    /* header */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11, 15, 20, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; height: 3.5rem;
+    }
+    .logo {
+      font-family: var(--display); font-weight: 700; font-size: 1.05rem;
+      letter-spacing: -.01em; text-decoration: none; color: var(--teal);
+    }
+    .nav { display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500;
+      padding-block: .25rem; border-bottom: 2px solid transparent; white-space: nowrap;
+    }
+    .nav a:hover { color: var(--text); }
+    .nav a[aria-current="true"] { color: var(--text); border-bottom-color: var(--teal); }
+
+    /* hero */
+    .hero { padding-block: clamp(3.5rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem); }
+    .hero .wrap {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 4rem); align-items: center;
+    }
+    .status {
+      display: inline-flex; align-items: center; gap: .55rem;
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: .3rem .85rem; font-size: .9rem; color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .status::before {
+      content: ''; width: .5rem; height: .5rem; border-radius: 50%; background: var(--teal);
+    }
+    h1 {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(3rem, 8.5vw, 5.75rem);
+      line-height: .98; letter-spacing: -.035em;
+      margin-bottom: 1.25rem;
+    }
+    .role { font-size: 1.25rem; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+    .lede { color: var(--muted); max-width: 52ch; margin-bottom: 1rem; }
+    .count { color: var(--faint); font-size: .95rem; max-width: 52ch; margin-bottom: 2rem; }
+    .btns { display: flex; flex-wrap: wrap; gap: .9rem; }
+    .btn {
+      display: inline-block; padding: .7rem 1.4rem; border-radius: 6px;
+      font-weight: 600; font-size: .95rem; text-decoration: none; cursor: pointer;
+      border: 1.5px solid transparent; font-family: var(--body);
+    }
+    .btn-primary { background: var(--teal); color: var(--teal-ink); }
+    .btn-primary:hover { background: #5eead4; }
+    .btn-ghost { border-color: #2c3a4a; color: var(--text); background: transparent; }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+    .board { margin: 0; }
+    .board-frame {
+      background: var(--raised); border: 1px solid var(--line);
+      border-radius: 6px; padding: .6rem; display: block;
+    }
+    .board canvas { display: block; max-width: 100%; }
+    .board figcaption { color: var(--faint); font-size: .875rem; margin-top: .75rem; max-width: 46ch; }
+    .board figcaption a { color: var(--muted); text-underline-offset: 3px; }
+    .board figcaption a:hover { color: var(--teal); }
+
+    /* section heads */
+    .section-head { margin-bottom: 2.5rem; }
+    .section-head h2 {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(2rem, 4.5vw, 2.75rem);
+      line-height: 1.1; letter-spacing: -.025em; margin-bottom: .6rem;
+    }
+    .section-head p { color: var(--muted); max-width: 58ch; }
+    .sub-head {
+      font-family: var(--display); font-weight: 600; font-size: 1.5rem;
+      letter-spacing: -.02em; margin: 4rem 0 1.25rem;
+    }
+
+    /* chips and links */
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
+    .chips li {
+      font-size: .8rem; padding: .1rem .65rem; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--muted);
+    }
+    .chips .live { border-color: rgba(242, 184, 75, .5); color: var(--gold); }
+    .links { display: flex; flex-direction: column; gap: .45rem; min-width: 10rem; }
+    .links a { text-underline-offset: 4px; font-weight: 500; color: var(--muted); }
+    .links a:first-child { color: var(--teal); }
+    .links a:hover { color: var(--text); }
+
+    /* featured */
+    .feature {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: clamp(1.75rem, 4vw, 3rem); align-items: center;
+    }
+    .feature-img {
+      background: #000; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+    }
+    .feature-img img { display: block; width: 100%; height: 360px; object-fit: contain; }
+    .feature h3 {
+      font-family: var(--display); font-weight: 700; font-size: 2rem;
+      letter-spacing: -.025em; line-height: 1.1; margin-bottom: .35rem;
+    }
+    .feature .tagline { color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+    .facts { display: grid; gap: .85rem; margin-bottom: 1.5rem; }
+    .facts dt { font-weight: 600; }
+    .facts dd { color: var(--muted); max-width: 54ch; }
+    .feature .btns { margin-top: 1.25rem; }
+
+    /* game rows */
+    .row {
+      display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr) auto;
+      gap: 1.75rem; padding-block: 1.6rem; border-top: 1px solid var(--line); align-items: start;
+    }
+    .row:last-child { border-bottom: 1px solid var(--line); }
+    .thumb {
+      aspect-ratio: 4 / 3; background: #000; border: 1px solid var(--line);
+      border-radius: 4px; overflow: hidden;
+    }
+    .thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .row h3, .tool h3 {
+      font-family: var(--display); font-weight: 600; font-size: 1.3rem;
+      letter-spacing: -.015em; line-height: 1.2; margin-bottom: .4rem;
+    }
+    .row p { color: var(--muted); max-width: 62ch; }
+
+    /* tool list */
+    .tool {
+      display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) auto;
+      gap: 1.75rem; padding-block: 1.3rem; border-top: 1px solid var(--line); align-items: start;
+    }
+    .tool:last-child { border-bottom: 1px solid var(--line); }
+    .tool h3 { margin-bottom: .1rem; }
+    .tool .stack { color: var(--faint); font-size: .9rem; }
+    .tool p { color: var(--muted); max-width: 62ch; }
+
+    /* analysis */
+    .finds {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2.75rem 2.5rem;
+    }
+    .find { border-top: 2px solid var(--teal); padding-top: 1.25rem; display: flex; flex-direction: column; }
+    .find h3 {
+      font-family: var(--display); font-weight: 600; font-size: 1.45rem;
+      line-height: 1.25; letter-spacing: -.015em; margin-bottom: .75rem;
+    }
+    .find p { color: var(--muted); margin-bottom: .25rem; }
+    .find .chips { margin-bottom: 1.1rem; }
+    .find .links { margin-top: auto; }
+
+    /* about */
+    .about-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 4rem); align-items: start;
+    }
+    .about-text p { color: var(--muted); max-width: 56ch; margin-bottom: 1rem; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-text .english { color: var(--teal); font-weight: 500; margin-top: 1.5rem; }
+    .skills { display: grid; gap: 1.25rem; margin-bottom: 2.5rem; }
+    .skills dt { font-weight: 600; margin-bottom: .1rem; }
+    .skills dd { color: var(--muted); }
+    .timeline { border-left: 1px solid var(--line); }
+    .timeline li { padding: 0 0 1.1rem 1.25rem; position: relative; }
+    .timeline li::before {
+      content: ''; position: absolute; left: -4px; top: .6rem;
+      width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+    }
+    .timeline .when { display: block; color: var(--faint); font-size: .875rem; }
+
+    /* contact */
+    .contact { background: var(--raised); border-top: 1px solid var(--line); }
+    .contact-inner { max-width: 640px; }
+    .contact h2 {
+      font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4.5vw, 2.75rem);
+      line-height: 1.1; letter-spacing: -.025em; margin-bottom: .75rem;
+    }
+    .contact p { color: var(--muted); margin-bottom: 1.5rem; max-width: 52ch; }
+    .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.25rem; margin-bottom: 1.5rem; }
+    .email {
+      font-family: var(--display); font-weight: 600; font-size: clamp(1.15rem, 3vw, 1.6rem);
+      color: var(--teal); text-decoration: none; word-break: break-all;
+    }
+    .email:hover { color: var(--gold); }
+    .copy {
+      background: transparent; border: 1px solid #2c3a4a; color: var(--muted);
+      padding: .3rem .85rem; border-radius: 6px; font: inherit; font-size: .9rem; cursor: pointer;
+    }
+    .copy:hover { color: var(--text); border-color: var(--teal); }
+    .elsewhere { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin-top: 2rem; }
+    .elsewhere a { color: var(--muted); text-underline-offset: 4px; font-weight: 500; }
+    .elsewhere a:hover { color: var(--teal); }
+
+    .site-footer { border-top: 1px solid var(--line); padding-block: 1.6rem; color: var(--faint); font-size: .875rem; }
+    .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; }
+    .site-footer a { color: var(--muted); text-underline-offset: 3px; }
+
+    @media (max-width: 880px) {
+      .hero .wrap, .feature, .about-grid { grid-template-columns: 1fr; }
+      .row, .tool { grid-template-columns: 1fr; gap: 1rem; }
+      .thumb { max-width: 360px; }
+      .links { flex-direction: row; flex-wrap: wrap; gap: .4rem 1.5rem; }
+      .feature-img img { height: 260px; }
+    }
+    @media (max-width: 520px) {
+      .logo { display: none; }
+      .nav { gap: 1.25rem; }
+      .btns .btn { flex: 1 1 100%; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#games">Skip to the work</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="#top">cloudbv</a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#games">Games</a>
+        <a href="#tools">Tools</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="name">
+      <div class="wrap">
+        <div>
+          <p class="status">Open to junior roles, contract work and collaboration</p>
+          <h1 id="name">Yosef Setiawan</h1>
+          <p class="role">Game programmer in Godot 4 and Python, based in Denpasar, Bali</p>
+          <p class="lede">Solo developer who ships complete projects. I built and published ChessAutoplay to Google Play, and I design original browser games on itch.io. Clean mechanics, no paywalls.</p>
+          <p class="count">So far: one Android app, seven games, six desktop tools and three data and process case studies.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#games">See the games</a>
+            <a class="btn btn-ghost" href="Yosef_Setiawan_CV_GameProgrammer.pdf" target="_blank" rel="noopener">Download my CV<span class="sr"> (PDF, opens in new tab)</span></a>
+          </div>
+        </div>
+
+        <figure class="board">
+          <div class="board-frame" id="board-wrap">
+            <canvas id="board" aria-hidden="true"></canvas>
+          </div>
+          <figcaption>This board is my Snake game playing itself. Every cell the snake eats from fills for good, and the game is won when the board is full. <a href="https://cloudbv.itch.io/snake-classic-with-a-twist" target="_blank" rel="noopener">Play it yourself<span class="sr"> (opens in new tab)</span></a>.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="games" aria-labelledby="games-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="games-title">Games built with purpose</h2>
+          <p>Every project started with a frustration: ads, paywalls, or mechanics that just did not feel right. So I rebuilt them the way I always imagined they should be.</p>
+        </div>
+
+        <article class="feature">
+          <div class="feature-img">
+            <img src="chess.png" alt="ChessAutoplay replaying a Sicilian Defense game, with the move list beside the board" width="640" height="360" />
+          </div>
+          <div>
+            <h3>ChessAutoplay (Learn By Opening)</h3>
+            <p class="tagline">Live on Google Play</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd>Replays real 2000+ Elo Lichess games move by move, grouped by opening and time control. Eight openings, nine time controls, and any move in the notation is clickable.</dd>
+              </div>
+              <div>
+                <dt>The data pipeline</dt>
+                <dd>A Python tool cleans huge Lichess PGN exports, filters by opening, Elo, result and time control, and writes one short file per game.</dd>
+              </div>
+              <div>
+                <dt>The parser</dt>
+                <dd>Written from scratch in GDScript. It handles castling, en passant and promotion, and drives a board of 64 square scenes.</dd>
+              </div>
+            </dl>
+            <ul class="chips" aria-label="Technologies">
+              <li>Godot 4</li><li>GDScript</li><li>Python</li><li class="live">Live on Play Store</li>
+            </ul>
+            <div class="btns">
+              <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.cloudbv.chesstournamentautoplay" target="_blank" rel="noopener">Get it on Google Play<span class="sr"> (opens in new tab)</span></a>
+              <a class="btn btn-ghost" href="https://cloudbv.github.io/-Project-Chess-Tournament-Autoplay/">How it works</a>
+            </div>
+          </div>
+        </article>
+
+        <h3 class="sub-head">Classic games, reimagined</h3>
+
+        <div>
+          <article class="row">
+            <div class="thumb"><img src="pacman.png" alt="The Soul of Pac-Man: a blue maze with four ghosts and a blast ring" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>The Soul of Pac-Man</h3>
+              <p>Pac-Man flipped: you steer one of four ghosts through a 29 by 23 maze while an AI Pac-Man hunts dots and runs from you. Every 10 steps his soul jumps into the ghost farthest from him, so you have to read where he goes next. The AI runs on breadth-first search.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pygame</li><li>Game AI</li><li>Browser</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/the-soul-of-pacman" target="_blank" rel="noopener">Play on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/the-soul-of-pacman/">How it works</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="thumb"><img src="snake.png" alt="Two-player Snake on a dark grid with filled cells" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>Snake: Fill the Board</h3>
+              <p>There is no dying. Edges wrap, snakes pass through each other, and each cell you eat from is filled permanently. You win by filling the whole board. Solo for a high score, or two players racing for the food, on three board sizes.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pygame</li><li>pygbag</li><li>Browser</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/snake-classic-with-a-twist" target="_blank" rel="noopener">Play on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/2p-Snake-Calm/">How it works</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="thumb"><img src="sudoku.png" alt="Sudoku Calm: a dark board with empty cells tinted by how many digits could fit" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>Sudoku Calm</h3>
+              <p>Every puzzle has exactly one solution, in four difficulty levels. A heat map tints each empty cell by how many digits could still go there, so the red cells with a single option show you where to start. Select a cell and the sidebar lists its candidates.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pygame</li><li>Browser</li><li>Logic</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/sudoku-classic-with-a-twist" target="_blank" rel="noopener">Play on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/Sudoku-Calm/">How it works</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="thumb"><img src="block_breaker.png" alt="Block Breaker: rainbow rows of bricks, a white ball and a cyan paddle" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>Block Breaker</h3>
+              <p>A brick-breaker with explode, pierce and split powerups. Bricks take more hits each level, and when 10 or fewer remain the ball curves toward the nearest one. The whole game is one Python file with no image or sound assets.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pygame</li><li>Browser</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/block-breaker-simple" target="_blank" rel="noopener">Play on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/block_breaker_simple/">How it works</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="thumb"><img src="block_blast.png" alt="Block Blast Ghost Edition: a partly filled grid with green hatched ghost blocks" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>Block Blast: Ghost Edition</h3>
+              <p>An 8 by 8 block puzzle where every piece has at least one ghost cell. Normal cells need empty space, but ghost cells may land on filled ones, so you can squeeze pieces into spots that would otherwise be impossible. 25 shapes, with combo scoring.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pygame</li><li>Browser</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/block-blast-ghost" target="_blank" rel="noopener">Play on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/ghost_block_blast/">How it works</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="thumb"><img src="match3.png" alt="Match 3: an 8 by 8 board of colored gems with powerup rings" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>Match 3: Full Powerup Edition</h3>
+              <p>Line, Color and Area bombs you fire on demand, plus six fusions when you swap two powerups together, up to wiping the whole board. Under the gems sits a layer of tiles, and you win only when every tile in the center 6 by 6 is cleared. Difficulty runs 1 to 10, levels 1 to 50.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pygame</li><li>Browser</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/match-3-circle" target="_blank" rel="noopener">Play on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/match_3_circle_classic/">How it works</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div class="thumb"><img src="https://cloudbv.github.io/chess_basic/screenshot.png" alt="Chess: Basic Edition mid-game, with captured pieces and the move log in the sidebar" width="440" height="330" loading="lazy" decoding="async" /></div>
+            <div>
+              <h3>Chess: Basic Edition</h3>
+              <p>A two-player board for one shared screen that does not enforce the rules, just like a wooden set. Undo, flip the board, clocks, captured pieces, a piece bank and a move log make it handy for replaying positions, setting up puzzles and teaching.</p>
+              <ul class="chips" aria-label="Technologies"><li>Python</li><li>Tkinter</li><li>Desktop</li></ul>
+            </div>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/chess-basic" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/chess_basic/">How it works</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools" aria-labelledby="tools-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="tools-title">Tools that solve real problems</h2>
+          <p>Small desktop apps for classroom management and everyday planning. Most use only the Python standard library, so there is nothing to install besides Python.</p>
+        </div>
+
+        <div>
+          <article class="tool">
+            <div><h3>Wheel Spinner</h3><span class="stack">Python and Tkinter</span></div>
+            <p>A classroom picker where students with fewer points get bigger slices, so turns spread across the room. Separate class files, attendance, CSV export and automatic backups. I used it in my own lessons.</p>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/wheel-name-spin-with-score-system" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/wheel-spinner-with-score-system/">How it works</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div><h3>Group Randomizer</h3><span class="stack">Python and Tkinter</span></div>
+            <p>Splits a list into random groups, or into groups of equal strength using scores and a snake draft. Save and load lists, export results to TXT or CSV.</p>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/group-randomizer-with-score-system-for-balance" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/group_randomizer_balanced/">How it works</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div><h3>Group Sorter</h3><span class="stack">Python and Tkinter</span></div>
+            <p>For when you want to place each person by hand. Paste a list of names, then drag them into colour-coded groups. Save the session or export a text summary.</p>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/group-sorter-manual" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/group_sorter_manual/">How it works</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div><h3>Assignment Lottery</h3><span class="stack">Python and Tkinter</span></div>
+            <p>Hands out tasks to people at random. When there are more people than tasks, the tasks are shuffled and repeat in a loop so everyone gets one.</p>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/assignment-lottery" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/assignment_lottery/">How it works</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div><h3>Job Application Tracker</h3><span class="stack">Python and Tkinter</span></div>
+            <p>Tracks every application with five statuses, live counts, search and filters. Works offline, keeps a backup copy on every save and exports to Excel or CSV.</p>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/job-hunt-tracker" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/job_tracker/">How it works</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div><h3>Portfolio Maker</h3><span class="stack">Python and Tkinter</span></div>
+            <p>Fill in a five-tab form, click Generate HTML, and get a single-page portfolio site ready for GitHub Pages. Your data is saved locally so you can keep editing.</p>
+            <div class="links">
+              <a href="https://cloudbv.itch.io/portfolio-maker" target="_blank" rel="noopener">Get it on itch.io<span class="sr"> (opens in new tab)</span></a>
+              <a href="https://cloudbv.github.io/portofolio_maker/">How it works</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="analysis" aria-labelledby="analysis-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="analysis-title">Data and process work</h2>
+          <p>SQL analysis and business analysis, with the evidence shown. Each write-up says what it found and what it could not know.</p>
+        </div>
+
+        <div class="finds">
+          <article class="find">
+            <h3>Draw rate climbs from 16% at 1400 rating to 46% at 2600 and above.</h3>
+            <p>36,518 cleaned Lichess games analysed in PostgreSQL: Elo against actual results, the best and worst openings for White, and the biggest upsets.</p>
+            <ul class="chips" aria-label="Skills"><li>SQL</li><li>PostgreSQL</li><li>Data visualization</li></ul>
+            <div class="links"><a href="https://cloudbv.github.io/sql-chess-analysis/">Read the analysis</a></div>
+          </article>
+
+          <article class="find">
+            <h3>Orders that arrive 8 or more days late get review scores under half those of on-time orders.</h3>
+            <p>Brazilian e-commerce orders from Olist, January 2017 to August 2018: monthly revenue, late delivery rate by month and the top 10 categories.</p>
+            <ul class="chips" aria-label="Skills"><li>SQL</li><li>Data visualization</li></ul>
+            <div class="links"><a href="https://cloudbv.github.io/sql-sales-analysis/">Read the analysis</a></div>
+          </article>
+
+          <article class="find">
+            <h3>The passport service SOP text describes 4 to 5 steps. Its own slide shows 17.</h3>
+            <p>A case study of the Bengkalis immigration office's mobile passport service: swimlane diagrams, 5 pain points, 5 requirements and user stories, each traced to a page of the public SOP. Inference is labeled as inference.</p>
+            <ul class="chips" aria-label="Skills"><li>Process mapping</li><li>Requirements</li><li>User stories</li></ul>
+            <div class="links"><a href="https://cloudbv.github.io/ba-passport-process-analysis/">Read the case study</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="about-title">About me</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>I am a <strong>solo developer</strong> based in Denpasar, Bali. My degree is in <strong>Industrial Engineering</strong> (President University, 2023), so I tend to think in systems, processes and optimization.</p>
+            <p>I got into programming because simple mobile games kept getting ruined by ads and paywalls. So I started building my own: clean, focused and actually fun. My latest project, ChessAutoplay, is live on the Google Play Store.</p>
+            <p>I also spent a year <strong>teaching IT and Informatics</strong> to high school students, which taught me how to explain complex things simply. The Wheel Spinner and Group Randomizer came out of that classroom.</p>
+            <p class="english">English: C2 Proficient (EF SET 76/100)</p>
+          </div>
+
+          <div>
+            <dl class="skills">
+              <div><dt>Languages</dt><dd>GDScript, Python, SQL, HTML and CSS</dd></div>
+              <div><dt>Engines and libraries</dt><dd>Godot 4, Pygame, Tkinter, Pandas and NumPy</dd></div>
+              <div><dt>Data and analysis</dt><dd>PostgreSQL, process mapping, requirements writing</dd></div>
+              <div><dt>Tools</dt><dd>Git and GitHub, Linux (Mint, Ubuntu), Google Play Console, itch.io</dd></div>
+            </dl>
+            <ol class="timeline" aria-label="Experience and education">
+              <li><span class="when">2025 to present</span>Indie game developer, CloudBV</li>
+              <li><span class="when">2025 to 2026</span>IT, coding and informatics teacher, SMA HFO, Depok</li>
+              <li><span class="when">December 2023</span>Bachelor of Industrial Engineering, President University</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-inner">
+          <h2 id="contact-title">Let's build games together</h2>
+          <p>I am looking for my first role in the game industry. Open to junior developer roles, contract work or collaboration.</p>
+          <div class="email-row">
+            <a class="email" href="mailto:yosefsetiawan2001@gmail.com">yosefsetiawan2001@gmail.com</a>
+            <button class="copy" id="copy-email" type="button" aria-live="polite">Copy email</button>
+          </div>
+          <a class="btn btn-primary" href="Yosef_Setiawan_CV_GameProgrammer.pdf" target="_blank" rel="noopener">Download my CV<span class="sr"> (PDF, opens in new tab)</span></a>
+          <div class="elsewhere">
+            <a href="https://cloudbv.itch.io" target="_blank" rel="noopener">itch.io<span class="sr"> (opens in new tab)</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.cloudbv.chesstournamentautoplay" target="_blank" rel="noopener">Google Play<span class="sr"> (opens in new tab)</span></a>
+            <a href="https://github.com/cloudBV" target="_blank" rel="noopener">GitHub<span class="sr"> (opens in new tab)</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; 2026 Yosef Setiawan, Denpasar, Indonesia</span>
+      <span>Built with HTML and hosted on GitHub Pages. <a href="#top">Back to top</a></span>
+    </div>
+  </footer>
+
+  <script>
+    /* Hero board: Snake: Fill the Board, playing itself.
+       Same rules as the game: no collisions, edges wrap, eaten cells fill for good. */
+    (function () {
+      var canvas = document.getElementById('board');
+      var wrap = document.getElementById('board-wrap');
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext('2d');
+      var COLS = 30, ROWS = 20;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var COLOR = { empty: '#17202b', filled: '#0f766e', snake: '#2dd4bf', head: '#99f6e4', food: '#f2b84b' };
+
+      var filled, count, snake, dir, food, cell = 10, w = 0, h = 0;
+      var last = 0, acc = 0, holdStart = 0, onScreen = true, rafId = 0;
+
+      function idx(x, y) { return y * COLS + x; }
+      function freeCells() {
+        var out = [];
+        for (var i = 0; i < filled.length; i++) if (!filled[i]) out.push(i);
+        return out;
+      }
+      function placeFood() {
+        var free = freeCells();
+        if (!free.length) { food = null; return; }
+        var i = free[(Math.random() * free.length) | 0];
+        food = { x: i % COLS, y: (i / COLS) | 0 };
+      }
+      function reset() {
+        filled = new Uint8Array(COLS * ROWS);
+        count = 0;
+        snake = [];
+        for (var i = 0; i < 5; i++) snake.push({ x: 15 - i, y: 10 });
+        dir = { x: 1, y: 0 };
+        placeFood();
+      }
+      function wrapDelta(a, b, n) {
+        var d = b - a;
+        if (d > n / 2) d -= n;
+        if (d < -n / 2) d += n;
+        return d;
+      }
+      function chooseDir() {
+        if (!food) return;
+        var head = snake[0];
+        var dx = wrapDelta(head.x, food.x, COLS), dy = wrapDelta(head.y, food.y, ROWS);
+        var options = [];
+        if (dx > 0) options.push({ x: 1, y: 0 });
+        if (dx < 0) options.push({ x: -1, y: 0 });
+        if (dy > 0) options.push({ x: 0, y: 1 });
+        if (dy < 0) options.push({ x: 0, y: -1 });
+        var ok = options.filter(function (o) { return !(o.x === -dir.x && o.y === -dir.y); });
+        if (ok.length) {
+          var same = ok.filter(function (o) { return o.x === dir.x && o.y === dir.y; })[0];
+          dir = (same && Math.random() < 0.8) ? same : ok[(Math.random() * ok.length) | 0];
+        } else if (options.length) {
+          dir = { x: dir.y ? 1 : 0, y: dir.x ? 1 : 0 };
+        }
+      }
+      function step() {
+        chooseDir();
+        var head = snake[0];
+        var nx = (head.x + dir.x + COLS) % COLS, ny = (head.y + dir.y + ROWS) % ROWS;
+        snake.unshift({ x: nx, y: ny });
+        snake.pop();
+        if (food && nx === food.x && ny === food.y) {
+          filled[idx(nx, ny)] = 1; count++;
+          var free = freeCells();
+          if (free.length) { filled[free[(Math.random() * free.length) | 0]] = 1; count++; }
+          placeFood();
+        }
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        var g = Math.max(1, Math.floor(cell * 0.09)), s = cell - g * 2;
+        for (var y = 0; y < ROWS; y++) {
+          for (var x = 0; x < COLS; x++) {
+            ctx.fillStyle = filled[idx(x, y)] ? COLOR.filled : COLOR.empty;
+            ctx.fillRect(x * cell + g, y * cell + g, s, s);
+          }
+        }
+        if (food) {
+          ctx.fillStyle = COLOR.food;
+          var inset = Math.floor(cell * 0.2);
+          ctx.fillRect(food.x * cell + inset, food.y * cell + inset, cell - inset * 2, cell - inset * 2);
+        }
+        for (var i = snake.length - 1; i >= 0; i--) {
+          ctx.fillStyle = i === 0 ? COLOR.head : COLOR.snake;
+          ctx.globalAlpha = i === 0 ? 1 : 1 - i * 0.12;
+          ctx.fillRect(snake[i].x * cell + g, snake[i].y * cell + g, s, s);
+        }
+        ctx.globalAlpha = 1;
+      }
+      function resize() {
+        var dpr = window.devicePixelRatio || 1;
+        var avail = wrap.clientWidth - 20;
+        cell = Math.max(6, Math.floor(avail / COLS));
+        w = cell * COLS; h = cell * ROWS;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        draw();
+      }
+      function frame(t) {
+        rafId = 0;
+        if (!onScreen) return;
+        if (!last) last = t;
+        acc = Math.min(acc + (t - last), 300);
+        last = t;
+        if (!food) {
+          if (!holdStart) holdStart = t;
+          if (t - holdStart > 2500) { reset(); holdStart = 0; }
+        } else {
+          var interval = Math.max(45, 120 - count * 0.18);
+          while (acc >= interval) { step(); acc -= interval; }
+        }
+        draw();
+        rafId = requestAnimationFrame(frame);
+      }
+      function start() { if (!rafId && !reduce) { last = 0; rafId = requestAnimationFrame(frame); } }
+
+      reset();
+      if (reduce) {
+        for (var n = 0; n < 150; n++) filled[(Math.random() * filled.length) | 0] = 1;
+        placeFood();
+      }
+      resize();
+      if ('ResizeObserver' in window) new ResizeObserver(resize).observe(wrap);
+      else window.addEventListener('resize', resize);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          onScreen = entries[0].isIntersecting;
+          if (onScreen) start();
+        }).observe(canvas);
+      }
+      start();
+    })();
+
+    /* Highlight the current section in the nav. */
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+      var links = {};
+      document.querySelectorAll('.nav a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          Object.keys(links).forEach(function (k) { links[k].removeAttribute('aria-current'); });
+          if (links[e.target.id]) links[e.target.id].setAttribute('aria-current', 'true');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(links).forEach(function (k) { var el = document.getElementById(k); if (el) io.observe(el); });
+    })();
+
+    /* Copy email. */
+    (function () {
+      var btn = document.getElementById('copy-email');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var done = function (msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText('yosefsetiawan2001@gmail.com').then(function () { done('Copied'); }, function () { done('Copy failed'); });
+        } else { done('Copy failed'); }
+      });
+    })();
+  </script>
+</body>
+</html>
